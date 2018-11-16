@@ -46,6 +46,7 @@ class Circle extends Shape
         super();
         this.radius = radius;
         this.div = document.createElement("div");
+        this.div.className = "circle";
     }
 
     circumference() {
@@ -55,8 +56,11 @@ class Circle extends Shape
         return 3.14 * (Math.pow(this.radius, 2));
     }
     draw_shape() {
+        this.div.width = `${this.circumference()}`;
+        this.div.height = `${this.circumference()}`;
         this.div.borderRadius = "50%";
         this.div.backgroundColor = "purple";
+        container.appendChild(this.div);
     }
 }
 class Triangle extends Shape

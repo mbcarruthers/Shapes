@@ -3,9 +3,14 @@
     width:600px;
     height:600px;
     background-color:navajowhite;
+    position:relative;
 }
 
 .shape_container {
     border:1px solid black;
     margin:10px;
+}
+
+.circle {
+    position:absolute;
 }
