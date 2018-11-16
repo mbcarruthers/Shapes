@@ -1,0 +1,11 @@
+
+.container {
+    width:600px;
+    height:600px;
+    background-color:navajowhite;
+}
+
+.shape_container {
+    border:1px solid black;
+    margin:10px;
+}
