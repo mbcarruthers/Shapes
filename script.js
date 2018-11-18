@@ -14,7 +14,9 @@ rectangle_button.addEventListener("click", () => {
 });
 
 square_button.addEventListener("click", () => {
-
+    const side_length = document.querySelector("#side_length").value;
+    const square = new Square(side_length);
+    square.draw_shape();
 });
 
 circle_button.addEventListener("click", () => {
@@ -76,10 +78,16 @@ class Rectangle extends Shape
 {
     constructor( width , height ) {
         super();
+        if(width === height ) {
+            // do nothing: probably a better way to approach this though.
+        } else {
+
         this.width = width;
         this.height = height;
         this.div = document.createElement("div");
         this.div.className = "rectangle";
+        }
+
     }
     area() {
         return this.width * this.height;
@@ -94,6 +102,28 @@ class Rectangle extends Shape
         container.appendChild(this.div);
     }
 }
+
+class Square extends Shape
+{
+    constructor( side_length ) {
+        super();
+        this.side_length = side_length;
+        this.div = document.createElement("div");
+        this.div.className = "square";
+    }
+    area() {
+        return Math.pow(this.side_length , 2);
+    }
+    draw_shape() {
+        this.div.style.top = `${Math.floor( Math.random() * 599)}px`;
+        this.div.style.left = `${Math.floor( Math.random() * 599)}px`;
+        this.div.style.width = `${this.side_length}px`;
+        this.div.style.height = `${this.side_length}px`;
+        this.div.style.backgroundColor = "red";
+        container.appendChild(this.div);
+    }
+}
+
 class Triangle extends Shape
 {
     constructor( height ) {
@@ -106,16 +136,7 @@ class Triangle extends Shape
         return 0.5 * this.base * this.height;
     }
 }
-class Square extends Shape
-{
-    constructor( side_length ) {
-        super();
-        this.side_length = side_length;
-    }
-    area() {
-        return Math.pow(this.side_length , 2);
-    }
-}
+
 
 
 
