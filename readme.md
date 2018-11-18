@@ -2,11 +2,11 @@
  
 # Shape Up Or Shape Out
  
-#Covalence
+# Covalence
  
 
  
-#Info
+# Info
  
 You will be building a webpage that will enable users to draw shapes of varying sizes on the screen
  
