@@ -1,4 +1,4 @@
-const container = document.querySelector(".shape_container");
+const container = document.querySelector(".container");
 
 const rectangle_button = document.querySelector("#rectangle_button");
 const square_button = document.querySelector("#square_button");
@@ -6,7 +6,10 @@ const circle_button = document.querySelector("#circle_button");
 const triangle_button = document.querySelector("#triangle_button");
 
 rectangle_button.addEventListener("click", () => {
-
+    const height = document.querySelector("#rectangle_height").value;
+    const width = document.querySelector("#rectangle_width").value;
+    const rectangle = new Rectangle(width , height);
+    rectangle.draw_shape();
 
 });
 
@@ -25,7 +28,9 @@ triangle_button.addEventListener("click", () => {
 });
 
 
-
+// TODO: make all of the classes and figure out what needs to be put into the base class for all of them
+// TODO: Move more of the styling over to CSS
+// TODO:
 
 
 class Shape
@@ -50,16 +55,42 @@ class Circle extends Shape
     }
 
     circumference() {
+        console.log(2 * 3.14 * this.radius);
         return 2 * 3.14 * this.radius;
     }
     area() {
         return 3.14 * (Math.pow(this.radius, 2));
     }
     draw_shape() {
-        this.div.width = `${this.circumference()}`;
-        this.div.height = `${this.circumference()}`;
-        this.div.borderRadius = "50%";
-        this.div.backgroundColor = "purple";
+        this.div.style.top = `${Math.floor( Math.random() * 599)}px`;
+        this.div.style.left = `${Math.floor( Math.random() * 599)}px`;
+        this.div.style.width = `${this.circumference()}px`;
+        this.div.style.height = `${this.circumference()}px`;
+        this.div.style.borderRadius = "50%";
+        this.div.style.backgroundColor = "purple";
+        container.appendChild(this.div);
+    }
+}
+
+class Rectangle extends Shape
+{
+    constructor( width , height ) {
+        super();
+        this.width = width;
+        this.height = height;
+        this.div = document.createElement("div");
+        this.div.className = "rectangle";
+    }
+    area() {
+        return this.width * this.height;
+    }
+    draw_shape() {
+        this.div.style.top = `${Math.floor( Math.random() * 599)}px`;
+        this.div.style.left = `${Math.floor( Math.random() * 599)}px`;
+        this.div.style.margin = "1px";
+        this.div.style.width = `${this.width}px`;
+        this.div.style.height = `${this.height}px`;
+        this.div.style.backgroundColor = "green";
         container.appendChild(this.div);
     }
 }
@@ -85,17 +116,7 @@ class Square extends Shape
         return Math.pow(this.side_length , 2);
     }
 }
-class Rectangle extends Shape
-{
-    constructor( width , height ) {
-        super();
-        this.width = width;
-        this.height = height;
-    }
-    area() {
-        return this.width * this.height;
-    }
-}
+
 
 
 document.addEventListener("DOMContentLoaded" , function() {

@@ -1,4 +1,6 @@
-
+body {
+    background-color:rgb(55,85,169);
+}
 .container {
     width:600px;
     height:600px;
@@ -12,5 +14,13 @@
 }
 
 .circle {
+    position:absolute;
+}
+
+.rectangle {
+    position:absolute;
+}
+
+.square {
     position:absolute;
 }
