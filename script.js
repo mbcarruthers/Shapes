@@ -26,7 +26,9 @@ circle_button.addEventListener("click", () => {
 });
 
 triangle_button.addEventListener("click", () => {
-
+    const triangle_height = document.querySelector("#triangle_height").value;
+    const triangle = new Triangle(triangle_height);
+    triangle.draw_shape();
 });
 
 
@@ -131,9 +133,21 @@ class Triangle extends Shape
         this.height = height;
         this.width = height;
         this.base = height;
+        this.div = document.createElement("div");
+        this.div.className = "triangle";
     }
     area() {
         return 0.5 * this.base * this.height;
+    }
+    draw_shape() {
+        this.div.style.top = `${Math.floor( Math.random() * 599)}px`;
+        this.div.style.left = `${Math.floor( Math.random() * 599)}px`;
+        this.div.style.width = "0px";
+        this.div.style.height = "0px";
+        this.div.style.borderBottom = `${this.base}px solid yellow`;
+        this.div.style.borderRight = `${this.height}px solid transparent`;
+        this.div.backgroundColor = "yellow";
+        container.appendChild(this.div);
     }
 }
 
